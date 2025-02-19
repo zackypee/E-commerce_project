@@ -175,3 +175,71 @@ button:hover{
     align-items: flex-end;
     text-align: end;
 }
+
+/* PRODUCT*/
+.product{
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+.product img{
+    width: 100%;
+    height: 310px;
+    transition: 0.4s all;
+}
+.product:hover img{
+    opacity: 0.7;
+}
+
+
+.product .buy-btn{
+     background-color: #fb774b;
+     transform: translateY(50px);
+     opacity: 0;
+     transition: 0.3s all;
+}
+
+.product:hover .buy-btn{
+    transform: translateY(0);
+    opacity: 1;
+}
+hr{
+    width: 70px;
+    height: 3px !important;
+    opacity: 1 !important;
+    color: #fb774b;
+}
+.star{
+    padding: 10px 0;
+}
+.star i{
+    font-size: 0.9rem;
+    color: goldenrod;
+}
+
+#banner{
+    background-image: url(/assets/images/banner.jpg);
+    width: 100%;
+    height: 70vh;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: 80px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#banner h1{
+    color: #0D1B2A;
+}
+
+#banner button{
+    background-color: #008080;
+}
+
+
+#banner button:hover{
+    background-color: #4B0082;
+}
