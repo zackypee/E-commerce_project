@@ -204,7 +204,7 @@ button:hover{
 }
 hr{
     width: 70px;
-    height: 3px !important;
+    height: 10px !important;
     opacity: 1 !important;
     color: #fb774b;
 }
