@@ -10,13 +10,13 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg bg-body-tertiary py-3 fixed-top">
-  <div class="container-fluid">
-    <img src="./assets/images/icon.jpeg" alt="">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3 fixed-top">
+ <div class="container">
+     <img class="logo" src="./assets/images/logo.jpg" alt="logo">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     </button>
+    <div class="collapse navbar-collapse nav-buttons" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
          <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
@@ -31,8 +31,8 @@
             <a class="nav-link" href="#">Contact Us</a>
          </li>
          <li class="nav-item">
+            <i class="fa-solid fa-bag-shopping"></i>
             <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
          </li>       
       </ul>
      
@@ -40,7 +40,56 @@
     </div>
   </div>
 </nav>
+<!--HOME-->
+<section id="home">
+   <div class="container">
+      <h5>NEW ARRIVALS</h5>
+      <h1>Best Prices <span>This Season</span></h1>
+      <p>Eshop offer the best product for the most affordable Prices</p>
+      <button>Shop Now</button>
+   </div>
+</section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!--BRAND-->
+<section id="brand" class="container">
+   <div class="row m-0">
+      <img class="image-fluid col-lg-3 col-md-6 col-sm-12" src="./assets/images/adidas-2.svg" alt="">
+      <img class="image-fluid col-lg-3 col-md-6 col-sm-12" src="./assets/images/fashion_nova-logo_brandlogos.net_aqcdr.png" alt="">
+      <img class="image-fluid col-lg-3 col-md-6 col-sm-12" src="./assets/images/Louis-Vuitton.jpeg" alt="">
+      <img class="image-fluid col-lg-3 col-md-6 col-sm-12" src="./assets/images/nike_lgo.png" alt="">
+
+   </div>
+</section>
+
+<!--NEW-->
+<section id="new" class="w-100">
+   <div class="row p-0 m-0 ">
+      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+         <img class="image-fluid" src="assets/images/long_sleves.jpg" alt="">
+         <div class="details">
+            <h2>Extremely Awesome shirts</h2>
+            <button class="text-uppercase">Shop Now</button>
+         </div>
+      </div>
+
+      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+         <img class="image-fluid" src="assets/images/bag.jpg" alt="">
+         <div class="details">
+            <h2>Extremely Awesome Bags</h2>
+            <button class="text-uppercase">Shop Now</button>
+         </div>
+      </div>
+      <div class="one col-lg-4 col-md-12 col-sm-12 p-0">
+         <img class="image-fluid" src="assets/images/nikie.png" alt="">
+         <div class="details">
+            <h2>50% OFF</h2>
+            <button class="text-uppercase">Shop Now</button>
+         </div>
+      </div>
+   </div>
+   
+</section>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
