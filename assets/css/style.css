@@ -294,3 +294,14 @@ footer p{
 footer .copyright img{
     width: 30%;
 }
+
+.navbar .logo{
+    background-color: coral;
+    width: 40px;
+    height: 40px;
+    border: 0;
+}
+.navbar .logo h5{
+    font-weight: 700;
+    
+}
