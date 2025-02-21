@@ -60,7 +60,7 @@ h6{
     
 }
 
-.logo{
+.navbar .logo{
     width: 50px;
     height: 50px;
 }
@@ -90,7 +90,7 @@ button:hover{
 }
 
 .navbar-nav .nav-item .nav-link{
-    padding: 20px;
+    padding: 15px;
     color: #000;
     transform: 0.4s ease ;
 }
@@ -246,8 +246,12 @@ hr{
     background-color: #4B0082;
 }
 
+
+
   footer{
     background-color: #222222;
+    width: 100%;
+   
 }
 
 footer h5{
@@ -258,6 +262,9 @@ footer h5{
 
 footer li{
     padding-bottom: 4px;
+}
+footer ul{
+    list-style: none;
 }
 
 footer li a{
@@ -304,4 +311,36 @@ footer .copyright img{
 .navbar .logo h5{
     font-weight: 700;
     
+}
+
+.small-img-group{
+    display: flex;
+    justify-content: space-between ;
+}
+
+.small-img-col{
+    flex-basis: 24%;
+    cursor:  pointer;
+}
+
+.single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px ;
+}
+
+.single-product input:focus{
+    outline: none;
+}
+
+.single-product .buy-btn{
+    background-color: #fb774b;
+    opacity: 1;
+    transition: 0.4s all;
+}
+
+.single-product .buy-btn:hover{
+    background-color: #222222 ;
 }
