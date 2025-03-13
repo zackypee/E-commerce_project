@@ -1,3 +1,22 @@
+<?php
+
+include('server/connection.php');
+
+if(isset($_GET['product_id'])){
+   $product_id = $_GET['product_id'];
+      
+   $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+   $stmt->bind_param("i",$product_id);
+   $stmt->execute();
+
+   $product = $stmt->get_result(); 
+  
+   
+   //no producy id was  given 
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,44 +72,55 @@
      </div>
    </nav> 
 
+
+
+
+
    <!--single product-->
-  <section class="single-product py-5 pt-5">
+   <section class="single-product py-5 pt-5">
     <div class="row mt-5">
+      <?php while($row = $product->fetch_assoc()){ ?>
+
+        
+
         <div class="container  col-lg-5 col-md-6 col-sm-12">
-            <img class="image-fluid w-100 pb-1" src="assets/images/coats2.png" id="mainImg" alt="">
+            <img class="image-fluid w-100 pb-1" src="assets/images/<?php echo $row['product_image'];?>" id="mainImg" alt="">
             <div class="small-img-group">
                 <div class="small-img-col">
-                    <img src="assets/images/coats1.jpeg " width="100%" class="small-img"  alt="">
+                    <img src="assets/images/<?php  echo $row['product_image'];?>" width="100%" class="small-img"  alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="assets/images/coats2.png " width="100%" class="small-img"  alt="">
+                    <img src="assets/images/<?php echo $row['product_image2'];?>" width="100%" class="small-img"  alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="assets/images/coats3.jpg" width="100%" class="small-img"  alt="">
+                    <img src="assets/images/<?php echo $row['product_image3'];?>" width="100%" class="small-img"  alt="">
                 </div>
                 <div class="small-img-col">
-                    <img src="assets/images/p-shirt.webp" width="100%" class="small-img"  alt="">
+                    <img src="assets/images/<?php echo $row['product_image4'];?>" width="100%" class="small-img"  alt="">
                 </div> 
 
             </div>
-
-
         </div>
-
         <div class="col-lg-5 col-md-12 col-12">
-            <h6>Men/Shoes</h6>
-            <h2>$100</h2>
-            <input type="number" value="1" name="" id="">
-            <button class="buy-btn">Add To cart</button>
+            <h6><?php echo $row['product_name'];?></h6>
+            <h2>$<?php echo $row['product_price'];?></h2>
+            <form action="cart.php" method="POST">
+               <input type="hidden" name="product_id" value="<?php echo $row['product_id'];?>">
+               <input type="hidden" name="product_image" value="<?php echo $row['product_image'];?>">
+               <input type="hidden" name="product_name" value="<?php echo $row['product_name'];?>">
+               <input type="hidden" name="product_price" value="<?php echo $row['product_price'];?>">
+      
+               <input type="number" value="1" name="product_quantity" id="">
+               <button class="buy-btn" type="submit" name="add_to_cart" >Add To cart</button>
+            </form>
+            
             <h4 class="mt-5 mb-5">Product Details</h4>
-            <span>The details of the product will display shortly 
-                The details of the product will display shortly 
-                The details of the product will display shortly 
-                The details of the product will display shortly 
-
+            <span><?php echo $row['product_description'];?>
             </span>
         </div>
+           
 
+        <?php } ?>
     </div>
 
   </section> 

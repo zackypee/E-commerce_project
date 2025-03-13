@@ -1,10 +1,7 @@
 <?php
+$conn = mysqli_connect("127.0.0.1", "root", "1234", "php_project");
 
-
-$conn = mysqli_connect("localhost","root","","php_project")
-        or die("couldn't connect to database");     
-
-
-
-
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 ?>

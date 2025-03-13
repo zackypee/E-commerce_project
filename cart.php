@@ -1,3 +1,73 @@
+<?php
+
+  session_start();
+  if(isset($_POST['add_to_cart'])){
+
+
+   /// if the user has already added a product to the cart
+   if(isset($_SESSION['cart'])){
+
+      $product_aray_ids = array_column($_SESSION['cart'], 'product_id');
+      // this check if product is already in the cart or not 
+if(!in_array($_POST['product_id'], $product_aray_ids)){
+
+   $product_id = $_POST['product_id'];
+
+   $product_aray = array(
+      'product_id' => $_POST['product_id'],
+      'product_name' => $_POST['product_name'],
+      'product_price' => $_POST['product_price'],
+      'product_image' => $_POST['product_image'],
+      'product_quantity' => $_POST['product_quantity'],
+   );
+ 
+
+   $_SESSION['cart'][$product_id] = $product_aray;
+
+
+   // if product has already been added to the cart
+   }else{
+
+      echo '<script>alert("product was already added to cart")</script>';
+ }
+   
+
+      ///if this is the first product 
+   }else {
+      $product_id = $_POST['product_id'];
+      $product_name = $_POST['product_name'];
+      $product_price = $_POST['product_price'];
+      $product_image = $_POST['product_image'];
+      $product_quantity = $_POST['product_quantity'];
+
+      $product_aray = array(
+         'product_id' => $product_id,
+         'product_name' => $product_name,
+         'product_price' => $product_price,
+         'product_image' => $product_image,
+         'product_quantity' => $product_quantity,
+      );
+      $_SESSION['cart'][$product_id] = $product_aray;
+   }
+
+
+   // remove product from cart
+  }else if(isset($_POST['remove_product'])){
+
+   $product_id = $_POST['product_id'];
+   unset($_SESSION['cart'][$product_id]);
+  
+}else{
+      header('location: index.php');
+  }
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,21 +132,27 @@
             <th>Quantity</th>
             <th>Subtotal</th>
         </tr>
+
+        <?php foreach($_SESSION['cart'] as $key => $value){ ?>
         <tr>
             <td>
                 <div class="product-info">
-                    <img class="" src="assets/images/coats2.png" alt="">
+                    <img class="" src="assets/images/<?php echo $value['product_image']; ?>" alt="">
                     <div>
-                     <p>White Shoes</p>
-                     <small><span>$</span>155</small>
+                     <p><?php echo $value['product_name']; ?></p>
+                     <small><span>$</span><?php echo $value['product_price']; ?></small>
                      <br>
-                     <a class="remove-btn" href="#">Remove</a>
-                 </div>
+                     <form method="POST" action="cart.php">
+                        <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                       <input type="submit" name="remove_product" class="remove-btn" href="#" value="remove">   
+                     </form>
+                     
+                 </div> 
                   
                 </div>
             </td>
             <td>
-                 <input type="number" value="1">
+                 <input type="number" value="<?php echo $value['product_quantity']; ?>">
                  <a class="edit-btn" href="#">Edit</a>
             </td>
             <td>
@@ -84,51 +160,8 @@
                <span class="product-price">129.99</span>
             </td>
         </tr>
-        <tr>
-         <td>
-             <div class="product-info">
-                 <img class="" src="assets/images/coats2.png" alt="">
-                 <div>
-                  <p>White Shoes</p>
-                  <small><span>$</span>155</small>
-                  <br>
-                  <a class="remove-btn" href="#">Remove</a>
-              </div>
-               
-             </div>
-         </td>
-         <td>
-              <input type="number" value="1">
-              <a class="edit-btn" href="#">Edit</a>
-         </td>
-         <td>
-            <span>$</span>
-            <span class="product-price">129.99</span>
-         </td>
-     </tr>
-           <tr>
-            <td>
-                <div class="product-info">
-                    <img class="" src="assets/images/coats2.png" alt="">
-                    <div>
-                     <p>White Shoes</p>
-                     <small><span>$</span>155</small>
-                     <br>
-                     <a class="remove-btn" href="#">Remove</a>
-                 </div>
-                  
-                </div>
-            </td>
-            <td>
-                 <input type="number" value="1">
-                 <a class="edit-btn" href="#">Edit</a>
-            </td>
-            <td>
-               <span>$</span>
-               <span class="product-price">129.99</span>
-            </td>
-        </tr>
-         
+
+        <?php } ?> 
     </table>
 
     <div class="cart-total">
